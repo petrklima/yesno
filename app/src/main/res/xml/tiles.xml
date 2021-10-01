@@ -3,5 +3,5 @@
     <tile name="tileYes" color="green" text="Yes" />
     <tile name="tileNo" color="red" text="No" />
     <tile name="tileMaybe" color="yellow" text="Maybe" />
-    <tile name="tileNever" color="blue" text="Never" />
+    <tile name="tileNever" color="cyan" text="Never" />
 </resources>
