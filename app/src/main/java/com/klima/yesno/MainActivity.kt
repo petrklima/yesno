@@ -13,36 +13,39 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         val tableLayout = findViewById<TableLayout>(R.id.tableLayout)
         val tableRow = TableRow(this)
-        tableRow.setLayoutParams(
-            TableRow.LayoutParams(
-                TableRow.LayoutParams.MATCH_PARENT,
-                TableRow.LayoutParams.MATCH_PARENT,
-                10.0F
-            )
+        tableRow.layoutParams = TableRow.LayoutParams(
+            TableRow.LayoutParams.MATCH_PARENT,
+            TableRow.LayoutParams.MATCH_PARENT,
+            10.0F
         )
         tableRow.tag = "tableRow0"
         tableLayout.addView(tableRow)
 
-
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-
+        val tiles = ArrayList<Tile>()
         val parser = resources.getXml(R.xml.tiles)
         parser.next()
         var eventType = parser.eventType
         while (eventType != XmlPullParser.END_DOCUMENT) {
             val name: String? = parser.name
-            if ("tile" == name) {
+            if (name == "tile") {
                 if (eventType == XmlPullParser.START_TAG) {
-                    val fragment = TextInCircle.newInstance(Color.parseColor(parser.getAttributeValue(0)), parser.getAttributeValue(2))
-                    fragmentTransaction.add(R.id.tableRow0, fragment)
+                    val tile = Tile(tag = parser.getAttributeValue(1),
+                        colour = Color.parseColor(parser.getAttributeValue(0)),
+                        text = parser.getAttributeValue(2)
+                    )
+                    tiles.add(tile)
                 }
             }
             eventType = parser.next()
         }
 
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        for (tile: Tile in tiles) {
+            val fragment = TextInCircle.newInstance(tile.colour, tile.text)
+            fragmentTransaction.add(R.id.tableRow0, fragment, tile.tag)
+        }
         fragmentTransaction.commit()
     }
 }

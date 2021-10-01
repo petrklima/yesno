@@ -1,6 +1,5 @@
 package com.klima.yesno
 
-import android.content.DialogInterface
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -14,9 +13,9 @@ import androidx.fragment.app.Fragment
 
 class TextInCircle : Fragment(), View.OnClickListener {
 
-    var color: Int = Color.BLACK
-    var text: String = ""
-    var backgroundColor: Int = Color.BLACK
+    private var color: Int = Color.BLACK
+    private var text: String = ""
+    private var backgroundColor: Int = Color.BLACK
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,16 +36,16 @@ class TextInCircle : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val textView: TextView = view.findViewById(R.id.textView)
-        textView.setText(text)
+        textView.text = text
         val imageView: ImageView = view.findViewById(R.id.imageView)
         ImageViewCompat.setImageTintList(imageView, ColorStateList.valueOf(color))
     }
 
     override fun onClick(view: View?) {
-        if (backgroundColor == Color.BLACK)
-            backgroundColor = color
+        backgroundColor = if (backgroundColor == Color.BLACK)
+            color
         else
-            backgroundColor = Color.BLACK
+            Color.BLACK
 
         view?.setBackgroundColor(backgroundColor)
     }
