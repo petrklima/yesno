@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <tile name="tileYes" color="green" text="Yes" />
-    <tile name="tileNo" color="red" text="No" />
-    <tile name="tileMaybe" color="yellow" text="Maybe" />
-    <tile name="tileNever" color="cyan" text="Never" />
+    <tile name="tileMore" color="green" text="More" />
+    <tile name="tileStop" color="red" text="Stop" />
 </resources>
