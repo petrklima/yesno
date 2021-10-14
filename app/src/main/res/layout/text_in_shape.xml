@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="100"
-    android:minHeight="100dp">
+    android:minHeight="100dp"
+    android:onClick="onClick">
 
     <ImageView
         android:id="@+id/imageView"
@@ -19,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ctverecek"
+        app:srcCompat="@drawable/square"
         tools:ignore="ImageContrastCheck" />
 
     <TextView

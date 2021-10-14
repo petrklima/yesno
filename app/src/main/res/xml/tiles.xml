@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <tile name="tileMore" color="green" text="More" />
-    <tile name="tileStop" color="red" text="Stop" />
+    <tile name="tileMore" color="green" text="more" />
+    <tile name="tileStop" color="red" text="stop" />
 </resources>

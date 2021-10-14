@@ -1,6 +1,7 @@
 package com.klima.yesno
 
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.widget.TableLayout
@@ -10,13 +11,15 @@ import org.xmlpull.v1.XmlPullParser
 import kotlin.math.roundToInt
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
+
+    private lateinit var tiles: Set<Tile>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val tiles = parseTileResources()
+        tiles = parseTileResources()
 
         val geometry: Geometry = calculateGeometry(tiles.size)
 
@@ -26,21 +29,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun spreadTiles(
-        tiles: ArrayList<Tile>,
+        tiles: Set<Tile>,
         geometry: Geometry,
         rowIds: ArrayList<Int>
     ) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         var column = 1
         var row = 0
-        for (tile: Tile in tiles) {
+        for (tile in tiles) {
             if (column > geometry.columns) {
                 column = 1
                 row += 1
             }
             column += 1
 
-            val fragment = TextInCircle.newInstance(tile.colour, tile.text)
+            val fragment = TextInShape.newInstance(tile.viewId, tile.colour, tile.text)
             fragmentTransaction.add(rowIds[row], fragment)
         }
         fragmentTransaction.commit()
@@ -79,9 +82,8 @@ class MainActivity : AppCompatActivity() {
         return Geometry(rowCount.toInt(), columnCount)
     }
 
-    private fun parseTileResources(): ArrayList<Tile>
-    {
-        val tiles = ArrayList<Tile>()
+    private fun parseTileResources(): Set<Tile> {
+        val tiles = HashSet<Tile>()
         val parser = resources.getXml(R.xml.tiles)
         parser.next()
         var eventType = parser.eventType
@@ -89,8 +91,12 @@ class MainActivity : AppCompatActivity() {
             val name: String? = parser.name
             if (name == "tile") {
                 if (eventType == XmlPullParser.START_TAG) {
+                    val viewId = View.generateViewId()
+                    val resourceName = parser.getAttributeValue(2)
+                    val textValue = getString(resources.getIdentifier(resourceName, "string", packageName))
                     val tile = Tile(colour = Color.parseColor(parser.getAttributeValue(0)),
-                        text = parser.getAttributeValue(2)
+                        text = textValue,
+                        viewId = viewId
                     )
                     tiles.add(tile)
                 }
@@ -98,5 +104,18 @@ class MainActivity : AppCompatActivity() {
             eventType = parser.next()
         }
         return tiles
+    }
+
+    override fun onClick(view: View?) {
+        val twang = MediaPlayer.create(this, R.raw.twang)
+        twang.start()
+
+        val viewId: Int? = view?.id
+        for (tile in tiles) {
+            if (tile.viewId == viewId)
+                view.setBackgroundColor(tile.colour)
+            else
+                findViewById<View>(tile.viewId)?.setBackgroundColor(Color.BLACK)
+        }
     }
 }

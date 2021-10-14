@@ -11,14 +11,15 @@ import android.widget.TextView
 import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.Fragment
 
-class TextInCircle : Fragment(), View.OnClickListener {
-
+class TextInShape :  Fragment()
+{
+    private var viewId: Int = -1
     private var color: Int = Color.BLACK
     private var text: String = ""
-    private var backgroundColor: Int = Color.BLACK
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewId = arguments?.getInt("viewId") ?: -1
         color = arguments?.getInt("color") ?: 0
         text = arguments?.getString("text") ?: ""
     }
@@ -28,8 +29,8 @@ class TextInCircle : Fragment(), View.OnClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.text_in_circle, container, false)
-        view.setOnClickListener(this)
+        val view = inflater.inflate(R.layout.text_in_shape, container, false)
+        view.id = viewId
         return view
     }
 
@@ -41,19 +42,11 @@ class TextInCircle : Fragment(), View.OnClickListener {
         ImageViewCompat.setImageTintList(imageView, ColorStateList.valueOf(color))
     }
 
-    override fun onClick(view: View?) {
-        backgroundColor = if (backgroundColor == Color.BLACK)
-            color
-        else
-            Color.BLACK
-
-        view?.setBackgroundColor(backgroundColor)
-    }
-
     companion object {
-        fun newInstance(color: Int, text: String): TextInCircle {
-            val textInCircle = TextInCircle()
+        fun newInstance(viewId: Int, color: Int, text: String): TextInShape {
+            val textInCircle = TextInShape()
             val arguments = Bundle()
+            arguments.putInt("viewId", viewId)
             arguments.putInt("color", color)
             arguments.putString("text", text)
             textInCircle.arguments = arguments
