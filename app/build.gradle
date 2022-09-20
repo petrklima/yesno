@@ -10,8 +10,8 @@ android {
         applicationId "com.klima.yesno"
         minSdk 23
         targetSdk 31
-        versionCode 3
-        versionName "1.2"
+        versionCode 4
+        versionName "1.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -37,11 +37,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.klima.yesno'
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'

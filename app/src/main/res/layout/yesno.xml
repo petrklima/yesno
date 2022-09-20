@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/yesNoLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00BCD4"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/yesView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:foregroundTint="#FF0000"
+        android:scaleX="0.9"
+        android:scaleY="0.9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/noView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/square" />
+
+    <TextView
+        android:id="@+id/yesText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:text="@string/yes"
+        android:textColor="#C32525"
+        app:autoSizeMaxTextSize="200sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/yesView"
+        app:layout_constraintEnd_toEndOf="@+id/yesView"
+        app:layout_constraintStart_toStartOf="@+id/yesView"
+        app:layout_constraintTop_toTopOf="@id/yesView" />
+
+    <ImageView
+        android:id="@+id/noView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleX="0.9"
+        android:scaleY="0.9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/yesView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/square" />
+
+    <TextView
+        android:id="@+id/noText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:text="@string/no"
+        android:textColor="#C32525"
+        app:autoSizeMaxTextSize="200sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/noView"
+        app:layout_constraintEnd_toEndOf="@id/noView"
+        app:layout_constraintStart_toStartOf="@id/noView"
+        app:layout_constraintTop_toTopOf="@id/noView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

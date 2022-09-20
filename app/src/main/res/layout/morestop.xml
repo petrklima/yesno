@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/moreStopLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFEB3B"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/moreView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:foregroundTint="@color/teal_200"
+        android:scaleX="0.9"
+        android:scaleY="0.9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/stopView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/square"
+        tools:layout_conversion_absoluteHeight="600dp"
+        tools:layout_conversion_absoluteWidth="480dp" />
+
+    <TextView
+        android:id="@+id/moreText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:text="@string/more"
+        android:textColor="#EA1010"
+        app:autoSizeMaxTextSize="200sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/moreView"
+        app:layout_constraintEnd_toEndOf="@+id/moreView"
+        app:layout_constraintStart_toStartOf="@+id/moreView"
+        app:layout_constraintTop_toTopOf="@+id/moreView" />
+
+    <ImageView
+        android:id="@+id/stopView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:foregroundTint="#FF9800"
+        android:scaleX="0.9"
+        android:scaleY="0.9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/moreView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/square"
+        tools:layout_conversion_absoluteHeight="600dp"
+        tools:layout_conversion_absoluteWidth="480dp" />
+
+    <TextView
+        android:id="@+id/stopText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:text="@string/stop"
+        android:textColor="#EA1010"
+        app:autoSizeMaxTextSize="200sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/stopView"
+        app:layout_constraintEnd_toEndOf="@id/stopView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/stopView"
+        app:layout_constraintTop_toTopOf="@id/stopView"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">YesNo</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="more">More</string>
     <string name="stop">Stop</string>
 </resources>
